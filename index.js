@@ -1,6 +1,7 @@
 import Queue from "./lib/Queue.js"
 import axios from "axios"
 import readline from 'readline-sync';
+import { json } from "express";
 const token = '20211008012102'
 const option = {
     method: "GET",
@@ -19,6 +20,7 @@ async function start(){
 
 async function returnJSON(word){
     const response = await axios.get(`https://vtexstore.codeby.com.br/api/catalog_system/pub/products/search/${word}`,option)
+ //   JSON.parse(response)
     await Queue.add({ response })
 
     .catch(err => console.error('error:' + err));
