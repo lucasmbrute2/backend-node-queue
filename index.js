@@ -1,7 +1,6 @@
-
+import Queue from "./lib/Queue.js"
 import axios from "axios"
 import readline from 'readline-sync';
-
 const token = '20211008012102'
 const option = {
     method: "GET",
@@ -14,14 +13,14 @@ function searchWord(){
 async function start(){
     const word = searchWord()
     const api = await returnJSON(word)
-
     return console.log(`Existem ${api.data.length} itens ${word} disponíveis no estoque.`)
     
 }
 
 async function returnJSON(word){
     const response = await axios.get(`https://vtexstore.codeby.com.br/api/catalog_system/pub/products/search/${word}`,option)
-    // .then(json => console.log(json))
+    await Queue.add({ response })
+
     .catch(err => console.error('error:' + err));
     return response
 }

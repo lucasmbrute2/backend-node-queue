@@ -2,8 +2,8 @@ export default {
     host: "smtp.mailtrap.io",
     port: 2525,
     auth:{
-        user: "c4f181e5f435be",
-        pass: "7a1a11a273db99"
+        user: "182c8ea507d877",
+        pass: "e9581f64bd8631"
     }
 }
 //feito sem .env
